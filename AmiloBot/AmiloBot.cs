@@ -1,4 +1,5 @@
-﻿using AmiloBot.temboo;
+﻿using AmiloBot.dota;
+using AmiloBot.temboo;
 using Discord;
 using Discord.Commands;
 using System;
@@ -14,6 +15,7 @@ namespace AmiloBot
         DiscordClient discord;
         CommandService commandService;
         Flickr flickr = new Flickr();
+        Dota2Api dota2Api = new Dota2Api();
 
         public AmiloBot()
         {
@@ -48,11 +50,23 @@ namespace AmiloBot
 
         private void registerCommands() {
             command_hi();
+            command_dota();
+        }
+
+        private void command_dota()
+        {
+            commandService.CreateCommand(".dota").Do(async (e) =>
+            {
+                String url = dota2Api.getLastMatch(Convert.ToString(e.User.Id));
+                String message = (url != null) ? " here is your last dota match - " + url : " Sorry, you are not setup for this yet.";
+                await e.Channel.SendMessage(e.User.Mention + message);
+            });
         }
 
         private void command_hi() {
             commandService.CreateCommand(".hi").Do(async (e) =>
             {
+                Console.WriteLine("[USER_ID] " + e.User.Name + " " + e.User.Id);
                 await e.Channel.SendMessage(e.User.Mention + " नमस्ते! केहि अमिलो कुरा गर्नु होला |");
             });            
         }

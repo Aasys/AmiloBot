@@ -185,11 +185,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmiloBot.cs" />
-    <Compile Include="dota\Dota2Api.cs" />
+    <Compile Include="Dota\Dota2Api.cs" />
+    <Compile Include="Dota\DotaCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="temboo\Flickr.cs" />
-    <Compile Include="temboo\TembooUtil.cs" />
+    <Compile Include="Temboo\FlickrCommand.cs" />
+    <Compile Include="Temboo\TembooUtil.cs" />
+    <Compile Include="Util\StringUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

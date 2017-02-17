@@ -13,15 +13,15 @@ namespace AmiloBot.temboo
         private static readonly string TEMBOO_APP_NAME = "myFirstApp";
         private static readonly string TEMBOO_API_KEY = "kUUKLkhLe66eOAxLJqq8f3YhGSSxXfuU";
 
-        private static TembooSession session = null;
+        private static TembooSession _session = null;
 
         public static TembooSession ACTIVE_SESSION
         {
             get
             {
-                if (session == null)
-                    session = new TembooSession(TEMBOO_USER_NAME, TEMBOO_APP_NAME, TEMBOO_API_KEY);
-                return session;
+                if (_session == null)
+                    _session = new TembooSession(TEMBOO_USER_NAME, TEMBOO_APP_NAME, TEMBOO_API_KEY);
+                return _session;
             }
             private set { }
         }       

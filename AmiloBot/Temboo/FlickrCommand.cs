@@ -28,6 +28,7 @@ namespace AmiloBot.temboo
         private void RegisterFlickerCommand()
         {
             _commandService.CreateCommand(".flickr")
+            .Alias(new string[] { "pic"})
             .Description("Get Pictures from Flicker")
             .Parameter("arg1", ParameterType.Optional)
             .Parameter("arg2", ParameterType.Optional)
@@ -35,8 +36,10 @@ namespace AmiloBot.temboo
             {
                 if (!StringUtil.IsEmpty(e.GetArg("arg1")))
                 {
-                    String url = SearchPhotos(e.GetArg("arg1"));
-                    String message = (url != null) ? " Found this - " + url : " Sorry, couldn't find any pics.";
+                    String url = SearchPhotos(e.GetArg("arg1")).Replace("\\", "");
+
+                    Console.WriteLine(url);
+                    String message = (url != null) ? " Found this - \n\t[[img src=" + url + "]]" : " Sorry, couldn't find any pics.";
                     await e.Channel.SendMessage(e.User.Mention + message);
                 }
                 else

@@ -67,3 +67,7 @@ D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\obj\Debug\AmiloBot.csprojResolve
 D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\obj\Debug\AmiloBot.exe
 D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\obj\Debug\AmiloBot.pdb
 D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\bin\Debug\TembooSDK.dll
+D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\obj\Debug\AmiloBot.csproj.ResolveComReference.cache
+D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\bin\Debug\HtmlAgilityPack.dll
+D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\bin\Debug\HtmlAgilityPack.pdb
+D:\OneDrive\DevWorks\AmiloBot\AmiloBot\AmiloBot\bin\Debug\HtmlAgilityPack.xml

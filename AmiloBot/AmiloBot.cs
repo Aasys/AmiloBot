@@ -1,5 +1,6 @@
 ﻿using AmiloBot.dota;
 using AmiloBot.temboo;
+using AmiloBot.WebCapture;
 using Discord;
 using Discord.Commands;
 using System;
@@ -40,7 +41,7 @@ namespace AmiloBot
                 await _discord.Connect("MjgwNDU2MjgwMDY4NDU2NDQ4.C4cZ1A.HrGi1rIQYf7xFWdJhU4wIgzqZxc", TokenType.Bot);
             });
         }
-
+        
         private void Log(object sender, LogMessageEventArgs e)
         {
             Console.WriteLine("[" + e.Severity + "] " + e.Message);
@@ -48,14 +49,14 @@ namespace AmiloBot
 
         private void RegisterCommands() {
 
-            FlickrCommand flickr = new FlickrCommand(_commandService);
-
-            DotaCommand dotaCommand = new DotaCommand(_commandService);
+            new FlickrCommand(_commandService);
+            new DotaCommand(_commandService);
+            new NepaliCalendarCommand(_commandService);
 
             _commandService.CreateCommand(".hi").Do(async (e) =>
             {
                 Console.WriteLine("[USER_ID] " + e.User.Name + " " + e.User.Id);
-                await e.Channel.SendMessage(e.User.Mention + " नमस्ते! केहि अमिलो कुरा गर्नु होला |");
+                await e.Channel.SendTTSMessage(e.User.Mention + " Namaste! केहि अमिलो कुरा गर्नु होला |");
             });
         }
     }

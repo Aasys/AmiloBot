@@ -33,12 +33,25 @@ namespace AmiloBot.dota
                     queryUser = StringUtil.IsEmpty(queryUser) ? Convert.ToString(e.User.Id) : StringUtil.GetNumericValue(queryUser);
                     String url = _dota2Api.GetLastMatch(queryUser);
                     Console.WriteLine(queryUser);
-                    String message = (url != null) ? " here is the last dota match \n " + url : " Sorry, couldn't find any matches.";
+                    String message = (url != null) ? " here is the last dota match \n <" + url + ">" : " Sorry, couldn't find any matches.";
                     await e.Channel.SendMessage(e.User.Mention + message);
+                }
+                else if (e.GetArg("arg1").Equals("profile"))
+                {
+                    String queryUser = e.GetArg("arg2");
+                    queryUser = StringUtil.IsEmpty(queryUser) ? Convert.ToString(e.User.Id) : StringUtil.GetNumericValue(queryUser);
+                    String url = _dota2Api.GetDotaBuffProfile(queryUser);
+                    Console.WriteLine(queryUser);
+                    String message = (url != null) ? " here is the DotaBuff Profile \n <" + url + ">" : " Sorry, couldn't find profile.";
+                    await e.Channel.SendMessage(e.User.Mention + message);
+                }
+                else if (e.GetArg("arg1").Equals("update"))
+                {
+                    await e.Channel.SendMessage(_dota2Api.GetLastUpdate());
                 }
                 else
                 {
-                    await e.Channel.SendMessage(e.User.Mention + " Usage:\n\ta.dota last [@User]" );
+                    await e.Channel.SendMessage(e.User.Mention + " Usage:\n\ta.dota <last|profile> [@User]");
                 }
             });
         }
